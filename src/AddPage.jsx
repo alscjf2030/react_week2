@@ -3,7 +3,7 @@ import {Route} from "react-router-dom";
 import styled from "styled-components";
 import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {createMemo} from "./redux/modules/Memo"
+import {createMemo , addMemoFB} from "./redux/modules/Memo"
 
 
 const AddPage = (props) => {
@@ -19,20 +19,23 @@ const AddPage = (props) => {
     // const box = Array.from({length: count}, (v, i) => i)
 
     const addMemo = () => {
-        // setCount(count +1)
-        dispatch(createMemo({
+        // dispatch(createMemo({
+        //     word: word.current.value,
+        //     mean: mean.current.value,
+        //     example: example.current.value,
+        // }));
+        dispatch(addMemoFB({
             word: word.current.value,
             mean: mean.current.value,
             example: example.current.value,
-        }));
+        }))
         setCount(count + 1)
         history.push("/")
     }
 
-
     return (
         <NameBox1>
-            <h3 style={{textAlign: "center"}}>명함 추가하기</h3>
+            <h3 style={{textAlign: "center"}}>단어 추가하기</h3>
             <NameBox2>
                 <Mini>
                     <p>단어</p>
@@ -63,7 +66,7 @@ const AddPage = (props) => {
 export default AddPage;
 
 const NameBox1 = styled.div`
-  background-color: lightblue;
+  background-color: slateblue;
   border: aliceblue 2px solid ;
   border-radius: 10px;
   width: 300px;
